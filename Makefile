@@ -6,11 +6,11 @@
 #    By: lgottsch <lgottsch@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/11 15:14:38 by lgottsch          #+#    #+#              #
-#    Updated: 2024/10/11 15:21:55 by lgottsch         ###   ########.fr        #
+#    Updated: 2024/10/12 17:23:47 by lgottsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FUNCTIONS = xyz.c
+FUNCTIONS = ft_printf.c ft_strlen.c
 
 
 O_FILES = $(FUNCTIONS:.c =.o)

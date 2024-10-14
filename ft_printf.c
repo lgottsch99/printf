@@ -6,7 +6,7 @@
 /*   By: lgottsch <lgottsch@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:13:13 by lgottsch          #+#    #+#             */
-/*   Updated: 2024/10/12 18:09:20 by lgottsch         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:06:10 by lgottsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ how to
 
 
 behaviour std printf:
-	only writes to stdout (=terminal)
+	only writes to stdout (=terminal) fd 1
 
 use:
 	malloc, free, write,
@@ -41,7 +41,6 @@ int ft_printf(const char *s, ...)
 	va_list ap; //args actually a ptr to a struct
 	
 	va_start(ap, s);
-	// redirect to ft 2
 	//go thru s and if % found redirect
 	len = ft_strlen(s); //max chars in s to check
 	i = 0;
@@ -50,6 +49,7 @@ int ft_printf(const char *s, ...)
 		if (s[i] == '%')
 		{
 			//redirect to check case
+			//printf("found placeholder\n");
 			check_case(s, i, ap);
 			i = i + 2;
 		}
@@ -66,33 +66,25 @@ int ft_printf(const char *s, ...)
 
 //ft2 check which case and redirect to implementing ft
 void	check_case(const char *s, int i, va_list ap)
-{
-	//char c;
-	// char	*str;
-	// int	num;
-	
+{	
 	if (s[i + 1] == 'c')
-	{
 		ft_putchar_fd((char)va_arg(ap, int), 1);
-	}
-	// if (s[i + 1] == 's')
-	// 	//do sth
+	if (s[i + 1] == 's')
+		ft_putstr((char *)va_arg(ap, char *));
 	// if (s[i + 1] == 'p')
-	// 	//do sth
-	// if (s[i + 1] == 'd')
-	// 	//do sth
-	// if (s[i + 1] == 'i')
-	// 	//do sth
-	// if (s[i + 1] == 'u')
-	// 	//do sth
-	// if (s[i + 1] == 'x')
-	// 		//do sth
-	// if (s[i + 1] == 'X')
-	// 		//do sth
-	// if (s[i + 1] == '%')
-	// 		//do sth
-	else
-		printf("error in test.\n");
+	// 	ft_memaddress()
+	if (s[i + 1] == 'd')
+		ft_putnbr_fd(va_arg(ap, int), 1);
+	if (s[i + 1] == 'i')
+		ft_putnbr_fd(va_arg(ap, int), 1);
 
+	if (s[i + 1] == 'u') 					// NOT OK
+		ft_putnbr_fd(va_arg(ap, int), 1);//TO DO needs to convert to uint first then print
+	// if (s[i + 1] == 'x')
+	// 		//putnbr base 
+	// if (s[i + 1] == 'X')
+	// 		//putnbr base
+	if (s[i + 1] == '%')
+		ft_putchar_fd('%', 1);
 	return;
 }

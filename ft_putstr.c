@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgottsch <lgottsch@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 16:52:22 by lgottsch          #+#    #+#             */
-/*   Updated: 2024/10/14 16:53:43 by lgottsch         ###   ########.fr       */
+/*   Created: 2024/10/14 15:33:29 by lgottsch          #+#    #+#             */
+/*   Updated: 2024/10/14 17:10:09 by lgottsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef F_PRINTF_H
-# define F_PRINTF_H
+#include "ft_printf.h"
 
-#include <stdarg.h> //var ft
-#include <string.h> //size t
-#include <unistd.h> //write
-#include <limits.h> //max values
+void	ft_putstr(char *s)
+{
+	int	i;
 
-int ft_printf(const char *, ...);
-
-size_t	ft_strlen(const char *s);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr(char *s);
-void	ft_putnbr_fd(int n, int fd);
-
-
-
-
-
-# endif
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], 1);
+		i++;
+	}
+	return ;
+}

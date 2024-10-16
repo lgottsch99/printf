@@ -6,21 +6,26 @@
 /*   By: lgottsch <lgottsch@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:33:29 by lgottsch          #+#    #+#             */
-/*   Updated: 2024/10/14 17:10:09 by lgottsch         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:47:20 by lgottsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *s)
+int	ft_putstr(char *s, int *count)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
+	if (s && count)
 	{
-		ft_putchar_fd(s[i], 1);
-		i++;
+		while (s[i])
+		{
+			ft_putchar_fd(s[i], 1, count);
+			i++;
+		}
+		return (0);
 	}
-	return ;
+	else
+		return (-1);
 }

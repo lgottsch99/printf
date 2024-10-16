@@ -6,13 +6,20 @@
 /*   By: lgottsch <lgottsch@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 18:02:21 by lgottsch          #+#    #+#             */
-/*   Updated: 2024/10/12 18:02:36 by lgottsch         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:45:13 by lgottsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd, int *count)
 {
-	write(fd, &c, 1);
+	if (c && count)
+	{	
+		write(fd, &c, 1);
+		*count += 1;
+		return (0);
+	}
+	else
+		return (-1);
 }

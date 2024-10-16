@@ -6,7 +6,7 @@
 #    By: lgottsch <lgottsch@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/11 15:14:38 by lgottsch          #+#    #+#              #
-#    Updated: 2024/10/16 14:12:56 by lgottsch         ###   ########.fr        #
+#    Updated: 2024/10/16 18:27:44 by lgottsch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ NAME = libftprintf.a
 
 all: $(NAME)
 
-$(NAME): $()
-	ar rcs $() $(O_FILES)
+$(NAME): $(O_FILES)
+	ar rcs $(O_FILES) $(O_FILES)
 
 clean:
 	rm -f $(O_FILES)
